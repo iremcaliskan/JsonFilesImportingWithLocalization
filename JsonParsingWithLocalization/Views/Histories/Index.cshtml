@@ -1,0 +1,62 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Builder.RequestLocalizationOptions> locOptions
+@model JsonParsingWithLocalization.Models.MyViewModel
+
+@{
+    ViewData["Title"] = "History Page";
+    var culture = Context.Features.Get<Microsoft.AspNetCore.Localization.IRequestCultureFeature>();
+}
+<head>
+    <style>
+        table, th, td {
+            border: solid 1px #bbbbbb;
+            border-collapse: collapse;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<div class="text-center">
+    <h1 class="display-4">@localizer["Title"]</h1>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>@localizer["ID"]</th>
+            <th>@localizer["Date"]</th>
+            <th>@localizer["Category"]</th>
+            <th>@localizer["Event"]</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (@culture.RequestCulture.UICulture.Name == "it")
+        {
+            var model = Model.ListItalian;
+            @foreach (var item in model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Dc_Date</td>
+                    <td>@item.Dc_Category</td>
+                    <td>@item.Dc_Event</td>
+                </tr>
+            }
+        }
+        else
+        {
+            var model = Model.ListTurkish;
+            @foreach (var item in model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Dc_Date</td>
+                    <td>@item.Dc_Category</td>
+                    <td>@item.Dc_Event</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
