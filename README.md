@@ -6,7 +6,7 @@ There are two **.json** files. The information contained in these two files was 
 - Entity Framework Core
 - MSSQL
 - For UI Test .Net Core MVC
-- 
+
 ![image](https://user-images.githubusercontent.com/32266891/123819969-e03a2100-d902-11eb-98a4-e75820619d21.png)
 
 ![image](https://user-images.githubusercontent.com/32266891/123813091-491e9a80-d8fd-11eb-8f1c-d80fbbaf56e9.png)
